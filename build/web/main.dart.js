@@ -35219,7 +35219,7 @@ q[7]=g+q[7]>>>0}}
 V.a63.prototype={}
 F.Dc.prototype={
 H(a,b){var s=X.afL(null,C.oF,C.Kl)
-return new S.u0(P.aP(["/home",new F.Vi(),"/merge",new F.Vj()],t.N,t.Ab),"/home","APIX Crypto",s,null)}}
+return new S.u0(P.aP(["/home",new F.Vi(),"/merge",new F.Vj()],t.N,t.Ab),"/home","APIX",s,null)}}
 F.Vi.prototype={
 $1(a){return C.Ax},
 $S:313}
