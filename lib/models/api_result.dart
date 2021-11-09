@@ -1,6 +1,6 @@
 class ApiResult {
   final int error;
-  final dynamic result;
+  final List<dynamic>result;
 
   ApiResult({
     required this.error,

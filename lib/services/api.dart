@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:crypto_proj/models/api_result.dart';
+import 'package:crypto_proj/models/crypto_ticker.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
@@ -34,7 +35,7 @@ class Api {
     }
   }
 
-  Future<dynamic> fetchSymbol(
+  Future<dynamic> fetch(
     String endPoint, {
     Map<String, dynamic>? queryParams,
   }) async {
@@ -63,4 +64,48 @@ class Api {
     }
   }
 
+  Future<List<CryptoTicker>> fetchTicker(
+    String endPoint, {
+    Map<String, dynamic>? queryParams,
+  }) async {
+    String queryString = Uri(queryParameters: queryParams).query;
+    var url = Uri.parse('$BASE_URL/$endPoint?$queryString');
+
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      // แปลง text ที่มีรูปแบบเป็น JSON ไปเป็น Dart's data structure (List/Map)
+      String body = utf8.decode(response.bodyBytes);
+      Map<String, dynamic> jsonBody = json.decode(body);
+      List<CryptoTicker> tickers = [];
+      print('RESPONSE BODY: $jsonBody');
+      jsonBody.forEach((key, value) {
+        tickers.add(CryptoTicker.fromJson(key, value));
+      });
+      return tickers;
+    } else {
+      throw Exception('Failed to load Coins');
+    }
+  }
+
+  Future<dynamic> fetchBids(
+    String endPoint, {
+    Map<String, dynamic>? queryParams,
+  }) async {
+    String queryString = Uri(queryParameters: queryParams).query;
+    var url = Uri.parse('$BASE_URL/$endPoint?$queryString');
+    print(url);
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      // แปลง text ที่มีรูปแบบเป็น JSON ไปเป็น Dart's data structure (List/Map)
+      String body = utf8.decode(response.bodyBytes);
+      Map<String, dynamic> jsonBody = json.decode(body);
+      var bids = ApiResult.fromJson(jsonBody);
+
+      return [bids];
+    } else {
+      throw 'Server connection failed!';
+    }
+  }
 }

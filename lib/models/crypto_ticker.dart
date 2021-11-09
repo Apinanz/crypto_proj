@@ -1,6 +1,6 @@
 
 class CryptoTicker {
-
+  final String key;
   final int id;
   final double last;
   final double lowestAsk;
@@ -11,8 +11,9 @@ class CryptoTicker {
   final double isFrozen;
   final double high24hr;
   final double low24hr;
-
+  bool isFav = false;
   CryptoTicker({
+    required this.key,
     required this.id,
     required this.last,
     required this.lowestAsk,
@@ -24,8 +25,9 @@ class CryptoTicker {
     required this.high24hr,
     required this.low24hr});
 
-  factory CryptoTicker.fromJson(Map<String, dynamic> json){
+  factory CryptoTicker.fromJson(String tickerKey,Map<String, dynamic> json){
     return CryptoTicker(
+      key : tickerKey,
       id: json['id'],
       last: json['last'].toDouble(),
       lowestAsk: json['lowestAsk'].toDouble(),
