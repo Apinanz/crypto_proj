@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'APIX Crypto',
       theme: ThemeData(
         textTheme: const TextTheme(
           headline1: TextStyle(
