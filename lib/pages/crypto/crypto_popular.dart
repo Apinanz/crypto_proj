@@ -68,7 +68,7 @@ class _CryptoPopularState extends State<CryptoPopular> {
                                 'Coin',
                                 style: GoogleFonts.prompt(
                                     fontSize: 18.0,
-                                    color: Colors.white,
+                                    color: Colors.black54,
                                     fontWeight: FontWeight.bold),
                               )),
                               DataColumn(
@@ -76,7 +76,7 @@ class _CryptoPopularState extends State<CryptoPopular> {
                                 'Volume(Coin)',
                                 style: GoogleFonts.prompt(
                                     fontSize: 18.0,
-                                    color: Colors.white,
+                                    color: Colors.black54,
                                     fontWeight: FontWeight.bold),
                               )),
                               DataColumn(
@@ -84,7 +84,7 @@ class _CryptoPopularState extends State<CryptoPopular> {
                                 'Volume(THB)',
                                 style: GoogleFonts.prompt(
                                     fontSize: 18.0,
-                                    color: Colors.white,
+                                    color: Colors.black54,
                                     fontWeight: FontWeight.bold),
                               )),
                               DataColumn(
@@ -92,7 +92,7 @@ class _CryptoPopularState extends State<CryptoPopular> {
                                 'Last Price(THB)',
                                 style: GoogleFonts.prompt(
                                     fontSize: 18.0,
-                                    color: Colors.white,
+                                    color: Colors.black54,
                                     fontWeight: FontWeight.bold),
                               ))
                             ],
