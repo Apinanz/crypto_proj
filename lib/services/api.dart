@@ -93,7 +93,6 @@ class Api {
   }) async {
     String queryString = Uri(queryParameters: queryParams).query;
     var url = Uri.parse('$BASE_URL/$endPoint?$queryString');
-    print(url);
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

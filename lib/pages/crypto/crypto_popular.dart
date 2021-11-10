@@ -60,11 +60,10 @@ class _CryptoPopularState extends State<CryptoPopular> {
                   color: Colors.white.withOpacity(1),
                   child: ListView(
                       padding: EdgeInsets.all(8.0),
-
+                      scrollDirection: Axis.vertical,
                       children: [
                         Container(
                           child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
                             child: DataTable(
                               sortColumnIndex: _currentSortColumn,
                               sortAscending: _isAscending,
