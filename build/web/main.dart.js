@@ -36610,7 +36610,7 @@ al(){return new G.Mp(C.l)}}
 G.Mp.prototype={
 F(a,b){var s=null,r=U.Dd("assets/images/logo_apix.png",s,s,s)
 A.pS(s,s,C.EX,s,s,s,s,s,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s,s)
-return new K.wl(3,C.q,"/home",150,C.hi,r,s)}}
+return new K.wl(3,C.q,"/home",120,C.hi,r,s)}}
 T.wy.prototype={
 al(){return new T.MF(H.b([E.a0T("Popular quote"),E.a0T("Top Gainer"),E.a0T("Top Loser"),E.a0T("Favorite")],t.vT),C.l)}}
 T.MF.prototype={

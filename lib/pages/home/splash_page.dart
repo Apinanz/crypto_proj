@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
         image: Image.asset('assets/images/logo_apix.png'),
         backgroundColor: Colors.black,
         styleTextUnderTheLoader: TextStyle(color: Colors.deepPurple),
-        photoSize: 150.0,
+        photoSize: 120.0,
         loaderColor: Colors.blueAccent);
   }
 }
