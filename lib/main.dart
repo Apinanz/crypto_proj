@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-       HomePage.routeName: (context) => const HomePage(),
+        HomePage.routeName: (context) => const HomePage(),
         MergePage.routeName: (context) => const MergePage(),
       },
       initialRoute: HomePage.routeName,
