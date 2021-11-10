@@ -1,4 +1,3 @@
-
 import 'package:crypto_proj/models/crypto_ticker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class CryptoFavPage extends StatefulWidget {
   const CryptoFavPage({Key? key}) : super(key: key);
   static List<CryptoTicker> favList = [];
+
   @override
   _CryptoFavPageState createState() => _CryptoFavPageState();
 }
@@ -19,7 +19,7 @@ class _CryptoFavPageState extends State<CryptoFavPage> {
       //shrinkWrap: true,
       itemCount: CryptoFavPage.favList.length,
       itemBuilder: (BuildContext context, int index) {
-        var cryptoItem =  CryptoFavPage.favList[index];
+        var cryptoItem = CryptoFavPage.favList[index];
 
         return Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -29,7 +29,8 @@ class _CryptoFavPageState extends State<CryptoFavPage> {
           color: Colors.white.withOpacity(0.7),
           child: Row(
             children: <Widget>[
-              Expanded(
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
                 child: Container(
                   padding: EdgeInsets.all(10.0),
                   child: Row(
@@ -42,13 +43,14 @@ class _CryptoFavPageState extends State<CryptoFavPage> {
                             child: IconButton(
                               icon: Icon(
                                 Icons.star,
-                                color: cryptoItem.isFav? Colors.yellow.shade700:Colors.grey,
+                                color: !cryptoItem.isFav
+                                    ? Colors.yellow.shade700 : Colors.yellow.shade700 ,
                               ),
                               onPressed: () {
                                 setState(() {
-                                  cryptoItem.isFav = !cryptoItem.isFav;
-                                  if(cryptoItem.isFav){
-                                    CryptoFavPage.favList.add(cryptoItem);
+                                  if (cryptoItem.isFav) {
+                                    CryptoFavPage.favList.remove(cryptoItem);
+                                    cryptoItem.isFav = !cryptoItem.isFav;
                                   }else{
                                     CryptoFavPage.favList.remove(cryptoItem);
                                   }
@@ -59,37 +61,29 @@ class _CryptoFavPageState extends State<CryptoFavPage> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Image.asset(
-                                'assets/images/${cryptoItem.key
-                                    .substring(
-                                    cryptoItem.key.indexOf("_") + 1,
-                                    cryptoItem.key.length)}.png',
+                                'assets/images/${cryptoItem.key.substring(cryptoItem.key.indexOf("_") + 1, cryptoItem.key.length)}.png',
                                 width: 30,
                                 height: 30,
                                 fit: BoxFit.cover),
                           ),
                           Column(
-                            crossAxisAlignment:
-                            CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
                                 cryptoItem.key.substring(
                                     cryptoItem.key.indexOf("_") + 1,
                                     cryptoItem.key.length),
-                                style: GoogleFonts.prompt(
-                                    fontSize: 18.0),
+                                style: GoogleFonts.prompt(fontSize: 18.0),
                               ),
                               Row(
                                 children: [
                                   Text(
-                                    'change : ${cryptoItem
-                                        .percentChange} %',
+                                    'change : ${cryptoItem.percentChange} %',
                                     style: GoogleFonts.prompt(
                                         fontSize: 15.0,
-                                        color: cryptoItem
-                                            .percentChange
-                                            .toString()
-                                            .startsWith('-')
-                                        as bool
+                                        color: cryptoItem.percentChange
+                                                .toString()
+                                                .startsWith('-') as bool
                                             ? Colors.red.shade700
                                             : Colors.green.shade700),
                                   ),

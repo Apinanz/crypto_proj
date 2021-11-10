@@ -11,13 +11,16 @@ class CryptoPopular extends StatefulWidget {
 }
 
 class _CryptoPopularState extends State<CryptoPopular> {
+  int _currentSortColumn = 2;
+  bool _isAscending = true;
+  late Future<List<CryptoTicker>> _futurePopular;
 
   @override
   Widget build(BuildContext context) {
     //sym = coin;
     return Container(
       child: FutureBuilder<List<CryptoTicker>>(
-        future: _loadCrypto(),
+        future: _futurePopular,
         builder: (context, asks) {
           if (asks.connectionState != ConnectionState.done) {
             return Center(
@@ -54,75 +57,90 @@ class _CryptoPopularState extends State<CryptoPopular> {
                   margin: EdgeInsets.all(8.0),
                   elevation: 5.0,
                   shadowColor: Colors.black.withOpacity(0.1),
-                  color: Colors.white.withOpacity(0.8),
+                  color: Colors.white.withOpacity(1),
                   child: ListView(
                       padding: EdgeInsets.all(8.0),
                       scrollDirection: Axis.vertical,
                       children: [
                         Container(
-                          child: DataTable(
+                          child: SingleChildScrollView(
+                            child: DataTable(
+                              sortColumnIndex: _currentSortColumn,
+                              sortAscending: _isAscending,
+                              columns: [
+                                DataColumn(
+                                    label: Text(
+                                  'Coin',
+                                  style: GoogleFonts.prompt(
+                                      fontSize: 18.0,
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                                DataColumn(
+                                    label: Text(
+                                  'Volume(Coin)',
+                                  style: GoogleFonts.prompt(
+                                      fontSize: 18.0,
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                                DataColumn(
+                                    label: Text(
+                                      'Volume(THB)',
+                                      style: GoogleFonts.prompt(
+                                          fontSize: 18.0,
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    onSort: (columnIndex, _) {
+                                      setState(() {
+                                        _currentSortColumn = columnIndex;
+                                        if (_isAscending) {
+                                          asks.data!.sort((productA,
+                                                  productB) =>
+                                              productB.quoteVolume.compareTo(
+                                                  productA.quoteVolume));
+                                          _isAscending = false;
 
-                            columns: [
-                              DataColumn(
-                                  label: Text(
-                                'Coin',
-                                style: GoogleFonts.prompt(
-                                    fontSize: 18.0,
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.bold),
-                              )),
-                              DataColumn(
-                                  label: Text(
-                                'Volume(Coin)',
-                                style: GoogleFonts.prompt(
-                                    fontSize: 18.0,
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.bold),
-                              )),
-                              DataColumn(
-                                  label: Text(
-                                'Volume(THB)',
-                                style: GoogleFonts.prompt(
-                                    fontSize: 18.0,
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.bold),
-                              )),
-                              DataColumn(
-                                  label: Text(
-                                'Last Price(THB)',
-                                style: GoogleFonts.prompt(
-                                    fontSize: 18.0,
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.bold),
-                              ))
-                            ],
-                            rows: [
-                              for (var tickerList in asks.data!)
-                                DataRow(cells: [
+                                        }
+                                      });
+                                    }),
+                                DataColumn(
+                                    label: Text(
+                                  'Last Price(THB)',
+                                  style: GoogleFonts.prompt(
+                                      fontSize: 18.0,
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.bold),
+                                ))
+                              ],
+                              rows: asks.data!.map((item) {
+                                return DataRow(cells: [
                                   DataCell(Text(
-                                    '${tickerList.key.substring(tickerList.key.indexOf('_')+1,tickerList.key.length)}',
+                                    '${item.key.substring(item.key.indexOf('_') + 1, item.key.length)}',
                                     style: GoogleFonts.prompt(
                                       fontSize: 15.0,
-                                      color: Colors.red.shade600,
+                                      color: item.percentChange.toString().startsWith('-') as bool? Colors.red.shade700:Colors.green,
                                     ),
                                   )),
-                                  DataCell(Text('${tickerList.baseVolume}',
+                                  DataCell(Text('${item.baseVolume}',
                                       style: GoogleFonts.prompt(
                                         fontSize: 15.0,
-                                        color: Colors.white,
+                                        color:  Colors.black54,
                                       ))),
-                                  DataCell(Text('${tickerList.quoteVolume}',
+                                  DataCell(Text('${item.quoteVolume}',
                                       style: GoogleFonts.prompt(
                                         fontSize: 15.0,
-                                        color: Colors.white,
+                                        color:  Colors.black54,
                                       ))),
-                                  DataCell(Text('${tickerList.last}',
+                                  DataCell(Text('${item.last}',
                                       style: GoogleFonts.prompt(
                                         fontSize: 15.0,
-                                        color: Colors.white,
+                                        color:  item.percentChange.toString().startsWith('-') as bool? Colors.red.shade700:Colors.green,
                                       )))
-                                ]),
-                            ],
+                                ]);
+                              }).toList(),
+                            ),
                           ),
                         )
                       ]
@@ -137,6 +155,12 @@ class _CryptoPopularState extends State<CryptoPopular> {
       ),
     );
   }
+  @override
+  initState() {
+    super.initState();
+    _futurePopular = _loadCrypto();
+  }
+
 
   Future<List<CryptoTicker>> _loadCrypto() async {
     return await Api().fetchTicker('api/market/ticker');

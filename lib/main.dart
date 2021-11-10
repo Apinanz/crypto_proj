@@ -2,6 +2,7 @@ import 'package:crypto_proj/pages/crypto/crypto_merge.dart';
 import 'package:crypto_proj/pages/crypto/crypto_bids.dart';
 import 'package:crypto_proj/pages/home/home_page.dart';
 import 'package:crypto_proj/pages/home/market_page.dart';
+import 'package:crypto_proj/pages/home/splash_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,11 +26,11 @@ class MyApp extends StatelessWidget {
         ),
         primarySwatch: Colors.blue,
       ),
+      home: SplashPage(),
       routes: {
         HomePage.routeName: (context) => const HomePage(),
         MergePage.routeName: (context) => const MergePage(),
       },
-      initialRoute: HomePage.routeName,
     );
   }
 }

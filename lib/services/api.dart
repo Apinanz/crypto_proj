@@ -78,7 +78,6 @@ class Api {
       String body = utf8.decode(response.bodyBytes);
       Map<String, dynamic> jsonBody = json.decode(body);
       List<CryptoTicker> tickers = [];
-      print('RESPONSE BODY: $jsonBody');
       jsonBody.forEach((key, value) {
         tickers.add(CryptoTicker.fromJson(key, value));
       });

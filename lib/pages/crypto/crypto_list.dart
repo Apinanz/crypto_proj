@@ -81,19 +81,16 @@ class _CryptoListPageState extends State<CryptoListPage> {
                                       child: IconButton(
                                         icon: Icon(
                                           Icons.star,
-                                          color: cryptoItem.isFav
-                                              ? Colors.yellow.shade700
-                                              : Colors.grey,
+                                          color: !cryptoItem.isFav
+                                              ? Colors.grey:Colors.yellow.shade700,
                                         ),
                                         onPressed: () {
-                                          if (!cryptoItem.isFav) {
-                                            CryptoFavPage.favList.add(cryptoItem);
-                                          } else {
-                                            CryptoFavPage.favList.remove(cryptoItem);
-                                          }
                                           setState(() {
-                                            cryptoItem.isFav = !cryptoItem.isFav;
-                                            print(cryptoItem.isFav);
+                                            if (!cryptoItem.isFav) {
+                                              cryptoItem.isFav = !cryptoItem.isFav;
+                                              CryptoFavPage.favList
+                                                  .add(cryptoItem);
+                                            }
                                           });
                                         },
                                       ),

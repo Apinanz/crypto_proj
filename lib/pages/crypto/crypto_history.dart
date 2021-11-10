@@ -65,71 +65,71 @@ class _HistoryPageState extends State<HistoryPage> {
                       shadowColor: Colors.black.withOpacity(0.1),
                       color: Colors.grey.withOpacity(0.6),
                       child: Container(
-                        child: DataTable(
-                          columns: [
-                            DataColumn(
-                                label: Text(
-                                  'Time',
-                                  style: GoogleFonts.prompt(
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                            DataColumn(
-                                label: Text(
-                                  'Side',
-                                  style: GoogleFonts.prompt(
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                            DataColumn(
-                                label: Text(
-                                  'Price(THB)',
-                                  style: GoogleFonts.prompt(
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                            DataColumn(
-                                label: Text(
-                                  'Amount',
-                                  style: GoogleFonts.prompt(
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ))
-                          ],
-                          rows: [
-                            for (dynamic trade in tradeList.result)
-                              DataRow(cells: [
+                        child: SingleChildScrollView(
+                          child: DataTable(
+                            columns: [
+                              DataColumn(
+                                  label: Text(
+                                    'Time',
+                                    style: GoogleFonts.prompt(
+                                        fontSize: 18.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                              DataColumn(
+                                  label: Text(
+                                    'Side',
+                                    style: GoogleFonts.prompt(
+                                        fontSize: 18.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                              DataColumn(
+                                  label: Text(
+                                    'Price(THB)',
+                                    style: GoogleFonts.prompt(
+                                        fontSize: 18.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  )),
+                              DataColumn(
+                                  label: Text(
+                                    'Amount',
+                                    style: GoogleFonts.prompt(
+                                        fontSize: 18.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ))
+                            ],
+                            rows: [
+                              for (dynamic trade in tradeList.result)
+                                DataRow(cells: [
 
-                                DataCell(Expanded(
-                                  child: Text(
+                                  DataCell(Text(
                                     '${_convertTime(trade[0])}',
                                     style: GoogleFonts.prompt(
                                       fontSize: 15.0,
                                       color: trade[3].toString()=="BUY"? Colors.green : Colors.red.shade600,
                                     ),
-                                  ),
-                                )),
-                                DataCell(Text('${trade[3]}',
-                                    style: GoogleFonts.prompt(
-                                      fontSize: 15.0,
-                                      color: trade[3].toString()=="BUY"? Colors.green : Colors.red.shade600,
-                                    ))),
-                                DataCell(Text('${trade[1]}',
-                                    style: GoogleFonts.prompt(
-                                      fontSize: 15.0,
-                                      color: trade[3].toString()=="BUY"? Colors.green : Colors.red.shade600,
-                                    ))),
-                                DataCell(Text('${trade[2]}',
-                                    style: GoogleFonts.prompt(
-                                      fontSize: 15.0,
-                                      color: Colors.white,
-                                    )))
-                              ]),
-                          ],
+                                  )),
+                                  DataCell(Text('${trade[3]}',
+                                      style: GoogleFonts.prompt(
+                                        fontSize: 15.0,
+                                        color: trade[3].toString()=="BUY"? Colors.green : Colors.red.shade600,
+                                      ))),
+                                  DataCell(Text('${trade[1]}',
+                                      style: GoogleFonts.prompt(
+                                        fontSize: 15.0,
+                                        color: trade[3].toString()=="BUY"? Colors.green : Colors.red.shade600,
+                                      ))),
+                                  DataCell(Text('${trade[2]}',
+                                      style: GoogleFonts.prompt(
+                                        fontSize: 15.0,
+                                        color: Colors.white,
+                                      )))
+                                ]),
+                            ],
+                          ),
                         ),
                       ),
                     );

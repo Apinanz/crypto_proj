@@ -1,5 +1,7 @@
 import 'package:crypto_proj/pages/crypto/crypto_fav.dart';
 import 'package:crypto_proj/pages/crypto/crypto_popular.dart';
+import 'package:crypto_proj/pages/crypto/crypto_top_gain.dart';
+import 'package:crypto_proj/pages/crypto/crypto_top_loser.dart';
 import 'package:flutter/material.dart';
 
 class SubHomePage extends StatefulWidget {
@@ -40,10 +42,10 @@ class _SubHomePageState extends State<SubHomePage> {
           children: [
             Card(child: CryptoPopular()),
             Card(
-              child: CryptoFavPage(),
+              child: TopGainPage(),
             ),
             Card(
-              child: CryptoFavPage(),
+              child: TopLoserPage(),
             ),
             Card(
               child: CryptoFavPage(),
