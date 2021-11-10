@@ -66,7 +66,7 @@ class _AsksPageState extends State<AsksPage> {
                       color: Colors.grey.withOpacity(0.6),
                       child: Container(
                         child: SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
+                          scrollDirection: Axis.horizontal,
                           child: DataTable(
                             columns: [
                               DataColumn(

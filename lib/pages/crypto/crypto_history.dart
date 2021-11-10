@@ -66,6 +66,7 @@ class _HistoryPageState extends State<HistoryPage> {
                       color: Colors.grey.withOpacity(0.6),
                       child: Container(
                         child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
                           child: DataTable(
                             columns: [
                               DataColumn(

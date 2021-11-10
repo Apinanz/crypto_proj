@@ -63,6 +63,7 @@ class _TopGainPageState extends State<TopGainPage> {
                       children: [
                         Container(
                           child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
                             child: DataTable(
                               sortColumnIndex: _currentSortColumn,
                               sortAscending: _isAscending,

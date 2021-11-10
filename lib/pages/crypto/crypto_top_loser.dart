@@ -63,6 +63,7 @@ class _TopLoserPageState extends State<TopLoserPage> {
                       children: [
                         Container(
                           child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
                             child: DataTable(
                               sortColumnIndex: _currentSortColumn,
                               sortAscending: _isAscending,

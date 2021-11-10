@@ -30,7 +30,7 @@ class _CryptoFavPageState extends State<CryptoFavPage> {
           child: Row(
             children: <Widget>[
               SingleChildScrollView(
-                scrollDirection: Axis.vertical,
+                scrollDirection: Axis.horizontal,
                 child: Container(
                   padding: EdgeInsets.all(10.0),
                   child: Row(

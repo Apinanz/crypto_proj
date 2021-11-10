@@ -64,6 +64,7 @@ class _CryptoPopularState extends State<CryptoPopular> {
                       children: [
                         Container(
                           child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
                             child: DataTable(
                               sortColumnIndex: _currentSortColumn,
                               sortAscending: _isAscending,
