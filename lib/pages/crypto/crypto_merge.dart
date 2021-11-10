@@ -25,30 +25,28 @@ class _MergePageState extends State<MergePage> {
       appBar: AppBar(
         backgroundColor: Colors.black54,
         title: Center(
-            child: Expanded(
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                    'assets/images/${sym.substring(sym.indexOf('_') + 1, sym.length)}.png',
-                    width: 30,
-                    height: 30,
-                    fit: BoxFit.cover),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '${sym.substring(sym.indexOf('_') + 1, sym.length)}/THB',
-                  style: GoogleFonts.prompt(
-                      fontSize: 20.0,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                      'assets/images/${sym.substring(sym.indexOf('_') + 1, sym.length)}.png',
+                      width: 30,
+                      height: 30,
+                      fit: BoxFit.cover),
                 ),
-              ),
-            ],
-          ),
-        )),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    '${sym.substring(sym.indexOf('_') + 1, sym.length)}/THB',
+                    style: GoogleFonts.prompt(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            )),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.black54,

@@ -65,42 +65,45 @@ class _AsksPageState extends State<AsksPage> {
                       shadowColor: Colors.black.withOpacity(0.1),
                       color: Colors.grey.withOpacity(0.6),
                       child: Container(
-                        child: DataTable(
-                          columns: [
-                            DataColumn(
-                                label: Text(
-                              'Price ASKS',
-                              style: GoogleFonts.prompt(
-                                  fontSize: 18.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            )),
-                            DataColumn(
-                                label: Text(
-                              'Amount',
-                              style: GoogleFonts.prompt(
-                                  fontSize: 18.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ))
-                          ],
-                          rows: [
-                            for (dynamic bid in bidsList.result)
-                              DataRow(cells: [
-                                DataCell(Text(
-                                  '${bid[3]}',
-                                  style: GoogleFonts.prompt(
-                                    fontSize: 15.0,
-                                    color: Colors.red.shade600,
-                                  ),
-                                )),
-                                DataCell(Text('${bid[4]}',
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: DataTable(
+                            columns: [
+                              DataColumn(
+                                  label: Text(
+                                'Price ASKS',
+                                style: GoogleFonts.prompt(
+                                    fontSize: 18.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                              DataColumn(
+                                  label: Text(
+                                'Amount',
+                                style: GoogleFonts.prompt(
+                                    fontSize: 18.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ))
+                            ],
+                            rows: [
+                              for (dynamic bid in bidsList.result)
+                                DataRow(cells: [
+                                  DataCell(Text(
+                                    '${bid[3]}',
                                     style: GoogleFonts.prompt(
                                       fontSize: 15.0,
-                                      color: Colors.white,
-                                    )))
-                              ]),
-                          ],
+                                      color: Colors.red.shade600,
+                                    ),
+                                  )),
+                                  DataCell(Text('${bid[4]}',
+                                      style: GoogleFonts.prompt(
+                                        fontSize: 15.0,
+                                        color: Colors.white,
+                                      )))
+                                ]),
+                            ],
+                          ),
                         ),
                       ),
                     );
