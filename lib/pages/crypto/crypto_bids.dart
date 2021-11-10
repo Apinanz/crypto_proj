@@ -69,7 +69,7 @@ class _BidsPageState extends State<BidsPage> {
                       color: Colors.grey.withOpacity(0.6),
                       child: Container(
                         child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
+                          scrollDirection: Axis.vertical,
                           child: DataTable(
                             columns: [
                               DataColumn(

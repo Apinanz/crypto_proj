@@ -53,7 +53,7 @@ class _HistoryPageState extends State<HistoryPage> {
               backgroundColor: Colors.black,
               body: ListView.builder(
                   padding: EdgeInsets.all(8.0),
-                  scrollDirection: Axis.vertical,
+
                   //shrinkWrap: true,
                   itemCount: trade.data!.length,
                   itemBuilder: (BuildContext context, int index) {
