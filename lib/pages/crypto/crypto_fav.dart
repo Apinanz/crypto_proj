@@ -27,79 +27,75 @@ class _CryptoFavPageState extends State<CryptoFavPage> {
           elevation: 5.0,
           shadowColor: Colors.black.withOpacity(0.2),
           color: Colors.white.withOpacity(0.7),
-          child: Row(
-            children: <Widget>[
-              SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.star,
-                                color: !cryptoItem.isFav
-                                    ? Colors.yellow.shade700 : Colors.yellow.shade700 ,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  if (cryptoItem.isFav) {
-                                    CryptoFavPage.favList.remove(cryptoItem);
-                                    cryptoItem.isFav = !cryptoItem.isFav;
-                                  }else{
-                                    CryptoFavPage.favList.remove(cryptoItem);
-                                  }
-                                });
-                              },
-                            ),
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.star,
+                            color: !cryptoItem.isFav
+                                ? Colors.yellow.shade700 : Colors.yellow.shade700 ,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                                'assets/images/${cryptoItem.key.substring(cryptoItem.key.indexOf("_") + 1, cryptoItem.key.length)}.png',
-                                width: 30,
-                                height: 30,
-                                fit: BoxFit.cover),
+                          onPressed: () {
+                            setState(() {
+                              if (cryptoItem.isFav) {
+                                CryptoFavPage.favList.remove(cryptoItem);
+                                cryptoItem.isFav = !cryptoItem.isFav;
+                              }else{
+                                CryptoFavPage.favList.remove(cryptoItem);
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                            'assets/images/${cryptoItem.key.substring(cryptoItem.key.indexOf("_") + 1, cryptoItem.key.length)}.png',
+                            width: 30,
+                            height: 30,
+                            fit: BoxFit.cover),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            cryptoItem.key.substring(
+                                cryptoItem.key.indexOf("_") + 1,
+                                cryptoItem.key.length),
+                            style: GoogleFonts.prompt(fontSize: 18.0),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                cryptoItem.key.substring(
-                                    cryptoItem.key.indexOf("_") + 1,
-                                    cryptoItem.key.length),
-                                style: GoogleFonts.prompt(fontSize: 18.0),
-                              ),
-                              Row(
+                          Row(
 
-                                children: [
-                                  Text(
-                                    'change : ${cryptoItem.percentChange} %',
-                                    style: GoogleFonts.prompt(
-                                        fontSize: 15.0,
-                                        color: cryptoItem.percentChange
-                                                .toString()
-                                                .startsWith('-') as bool
-                                            ? Colors.red.shade700
-                                            : Colors.green.shade700),
-                                  ),
-                                ],
+                            children: [
+                              Text(
+                                'change : ${cryptoItem.percentChange} %',
+                                style: GoogleFonts.prompt(
+                                    fontSize: 15.0,
+                                    color: cryptoItem.percentChange
+                                            .toString()
+                                            .startsWith('-') as bool
+                                        ? Colors.red.shade700
+                                        : Colors.green.shade700),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      Text('${cryptoItem.last}',
-                          style: GoogleFonts.prompt(fontSize: 20.0)),
                     ],
                   ),
-                ),
+                  Text('${cryptoItem.last}',
+                      style: GoogleFonts.prompt(fontSize: 20.0),),
+                ],
               ),
-            ],
+            ),
           ),
         );
       },
