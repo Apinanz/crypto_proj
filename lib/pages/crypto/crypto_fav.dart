@@ -75,6 +75,7 @@ class _CryptoFavPageState extends State<CryptoFavPage> {
                                 style: GoogleFonts.prompt(fontSize: 18.0),
                               ),
                               Row(
+
                                 children: [
                                   Text(
                                     'change : ${cryptoItem.percentChange} %',

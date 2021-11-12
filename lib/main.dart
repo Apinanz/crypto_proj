@@ -1,7 +1,5 @@
 import 'package:crypto_proj/pages/crypto/crypto_merge.dart';
-import 'package:crypto_proj/pages/crypto/crypto_bids.dart';
 import 'package:crypto_proj/pages/home/home_page.dart';
-import 'package:crypto_proj/pages/home/market_page.dart';
 import 'package:crypto_proj/pages/home/splash_page.dart';
 import 'package:flutter/material.dart';
 
